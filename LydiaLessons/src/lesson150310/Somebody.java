@@ -1,4 +1,4 @@
-package Lesson150310;
+package lesson150310;
 
 public class Somebody { // Refactoring -- alt + command + R
 	

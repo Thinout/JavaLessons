@@ -1,4 +1,4 @@
-package Lesson150310;
+package lesson150310;
 
 public class POJO { // Plain Old Java Object, often immutable
 	// Java Bean

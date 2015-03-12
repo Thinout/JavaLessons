@@ -1,4 +1,4 @@
-package Lesson150303;
+package lesson150303;
 import java.util.Scanner;
 
 public class UnlimitedInput {

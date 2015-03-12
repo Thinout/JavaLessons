@@ -1,4 +1,4 @@
-package Lesson150303;
+package lesson150303;
 
 public class FlowControl {
 	public static void main(String[] args) {
