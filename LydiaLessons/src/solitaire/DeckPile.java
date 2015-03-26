@@ -10,24 +10,24 @@ class DeckPile extends CardPile {  // стопка -- колода
 		CardPile pileOne = new CardPile(0, 0);
 		CardPile pileTwo = new CardPile(0, 0);
 		int count = 0;
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j <= 12; j++) {
-				pileOne.addCard(new Card(i, j));
-				count++;
+		for (int i = 0; i < 4; i++) { // идет по мастям
+			for (int j = 0; j <= 12; j++) { // и по рангам
+				pileOne.addCard(new Card(i, j)); // помещая в первую стопку все карты по мастям и рангам
+				count++; // количество карт = 52
 			}
 		}
 		// then pull them out randomly
-		for (; count > 0; count--) {
-			int limit = ((int) (Math.random() * 1000)) % count;
+		for (; count > 0; count--) { // перемешиваем
+			int limit = ((int) (Math.random() * 1000)) % count; // сдвигаем колоду
 			// move down to a random location
 			for (int i = 0; i < limit; i++) {
 				pileTwo.addCard(pileOne.pop());
 			}
 			// then add the card found there
-			addCard(pileOne.pop());
+			addCard(pileOne.pop()); // кладем верхнюю карту в нашу новую колоду после сдвига
 			// then put the decks back together
 			while (!pileTwo.empty()) {
-				pileOne.addCard(pileTwo.pop());
+				pileOne.addCard(pileTwo.pop()); // все карты, до этого разделенные, собираем вместе
 			}
 		}
 	}

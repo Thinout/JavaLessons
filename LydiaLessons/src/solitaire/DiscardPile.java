@@ -6,14 +6,14 @@ class DiscardPile extends CardPile {
 		super(x, y);
 	}
 
-	public void addCard(final Card aCard) {
+	public void addCard(final Card aCard) { // делаем что-то свое и вызываем родителя: способ переопределения -- уточнение
 		if (!aCard.isFaceUp()) {
-			aCard.flip();
+			aCard.flip(); // когда кладем, переворачиваем
 		}
 		super.addCard(aCard);
 	}
 
-	public void select(final int tx, final int ty) {
+	public void select(final int tx, final int ty) { // в родителе селект ничего не делает
 		if (empty()) {
 			return;
 		}

@@ -6,7 +6,7 @@ class SuitPile extends CardPile {
 		super(x, y);
 	}
 
-	public boolean canTake(final Card aCard) {
+	public boolean canTake(final Card aCard) { // метод переопределения -- замещение
 		if (empty()) { // если стопка пустая
 			return aCard.isAce(); // является ли ранг карты равным 0, т.е. тузом
 		}

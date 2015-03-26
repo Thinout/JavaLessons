@@ -28,6 +28,7 @@ class TablePile extends CardPile {
 		stackDisplay(g, top());
 	}
 	// ************ ДЗ *************
+	// убрать повторяющийся кусок кода с DiscardPile
 	public boolean includes(final int tx, final int ty) {
 		// don't test bottom of card
 		return x <= tx && tx <= x + Card.width && y <= ty; // если у нас есть стопка, 
@@ -72,7 +73,7 @@ class TablePile extends CardPile {
 		}
 		localy = stackDisplay(g, aCard.link);
 		aCard.draw(g, x, localy);
-		return localy + 35;
+		return localy + 20;
 	}
 
 }
