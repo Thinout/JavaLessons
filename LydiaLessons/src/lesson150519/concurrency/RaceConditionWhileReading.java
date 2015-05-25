@@ -24,9 +24,13 @@ public class RaceConditionWhileReading {
 		}
 		
 		public boolean isGood() {
+			int x, y;
 			synchronized (this) {
-				return b == a + calc(a);				
+				x = a;
+				y = b;
 			}
+			int r = calc(x);
+			return y == x + r;				
 		}
 		
 		private int calc(final int value) {
