@@ -15,5 +15,9 @@ public class Field {
 	public int getHeight() {
 		return _data.length;
 	}
+
+	public int[][] getData() {
+		return _data;
+	}
 	
 }

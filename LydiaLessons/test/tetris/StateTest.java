@@ -21,31 +21,39 @@ public class StateTest {
 	}
 	
 	@Test
-	public void testSetFigure() {
+	public void testSetFigure() throws Exception {
 		assertEquals(3, _state.col);
 		assertEquals(0, _state.row);
 	}
 	
 	@Test
-	public void testMoveLeft() {
+	public void testMoveLeft() throws Exception {
 		int col = _state.col;
 		_logic.moveLeft();
 		assertEquals(col - 1, _state.col);
 	}
 	
 	@Test
-	public void testMoveRight() {
+	public void testMoveRight() throws Exception {
 		int col = _state.col;
 		_logic.moveRight();
 		assertEquals(col + 1, _state.col);
 	}
 	
 	@Test
-	public void testMoveDown() {
+	public void testMoveDown() throws Exception {
 		_state._figure = Figure.FOUR_HORIZONTAL;
 		int row = _state.row;
 		_logic.moveDown();
 		assertEquals(row + 1, _state.row);
+	}
+	
+	@Test
+	public void testDropDown() throws Exception {
+		_state._figure = Figure.FOUR_HORIZONTAL;
+		_state.col = 0;
+		_logic.dropDown();
+		assertEquals(_state._field.getHeight() - 3, _state.row);		
 	}
 	
 	@Test
@@ -65,15 +73,6 @@ public class StateTest {
 	}
 	
 	@Test
-	public void testFigureDoesntFitField() throws Exception {
-		_state._figure = Figure.FOUR_HORIZONTAL;
-		_state.col = -1;
-		assertEquals(false, _logic.isFigureFitsField());
-		_state.col = 0;
-		assertEquals(true, _logic.isFigureFitsField());
-	}
-	
-	@Test
 	public void testMoveDownTooFar() throws Exception {
 		_state._figure = Figure.FOUR_HORIZONTAL;
 		_state.row = _state._field.getHeight() - 3;
@@ -84,13 +83,20 @@ public class StateTest {
 	}
 	
 	@Test
+	public void testFigureDoesntFitField() throws Exception {
+		_state._figure = Figure.FOUR_HORIZONTAL;
+		_state.col = -1;
+		assertEquals(false, _logic.isFigureFitsField());
+		_state.col = 0;
+		assertEquals(true, _logic.isFigureFitsField());
+	}
+
+	@Test
 	public void testFigureOverlapsFieldContent() throws Exception {
 		_state._figure = Figure.FOUR_HORIZONTAL;
 		_state._field._data[3][_state.col] = 2;
 		_logic.moveDown();
 		assertTrue(_logic.isFigureFitsField());
 		assertEquals(0, _state.row);
-		
-		
-	}
+	}	
 }
